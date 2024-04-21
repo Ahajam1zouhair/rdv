@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const doctorAuth = require("../middleware/doctorMiddleware");
+const {doctorAuth} = require("../middleware/doctorMiddleware");
 const patientAuth = require("../middleware/patientMiddleware");
 const adminAuth = require("../middleware/adminMiddleware");
 const {

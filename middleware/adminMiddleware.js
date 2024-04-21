@@ -11,15 +11,9 @@ const adminAuth = asyncHandler(async (req, res, next) => {
         req.headers.authorization.startsWith("Bearer")
     ) {
         try {
-        // Get the token from the authorization header
         token = req.headers.authorization.split(" ")[1];
-    
-        // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-        // Find the admin by id
         req.admin = await Admin.findById(decoded.id).select("-admin_password");
-    
         next();
         } catch (error) {
         res.status(401);
